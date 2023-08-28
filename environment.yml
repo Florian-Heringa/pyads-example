@@ -1,0 +1,8 @@
+name: pyads-example
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9.17
+  - pip:
+      - pyads==3.3.9

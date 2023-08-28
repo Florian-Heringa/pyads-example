@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{df0e651f-fc01-4c13-90cd-d475f9fa8ba2}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	iHeartbeat : ULINT;
+	
+	st_comm : ST_PyADS;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[iHeartbeat := iHeartbeat + 1;]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
