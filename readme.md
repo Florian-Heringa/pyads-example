@@ -10,7 +10,7 @@ The following is shown:
 - Unstructured variables
     - Reading
     - Writing
-- Reading and writing structured variables
+- Structured variables
     - Structure definition
     - Reading
     - Writing
