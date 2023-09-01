@@ -23,8 +23,8 @@ print("\tConnection successful...")
 
 ## ======================== Get an overview of available symbols
 print("\n========= Available Symbols ==============")
-for _ in plc.get_all_symbols():
-    print(_.name)
+for symbol in plc.get_all_symbols():
+    print(symbols.name)
 print("=========================================\n")
 
 ## ======================== Read unstructured data type
