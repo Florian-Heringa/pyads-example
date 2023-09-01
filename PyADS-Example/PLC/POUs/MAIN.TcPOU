@@ -3,12 +3,16 @@
   <POU Name="MAIN" Id="{df0e651f-fc01-4c13-90cd-d475f9fa8ba2}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	iHeartbeat : ULINT;
+	iHeartbeat 		: ULINT;
+	iSlowHeartbeat 	: ULINT;
 	
 	st_comm : ST_PyADS;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[iHeartbeat := iHeartbeat + 1;]]></ST>
+      <ST><![CDATA[iHeartbeat := iHeartbeat + 1;
+IF iHeartbeat MOD 1000 = 0 THEN
+	iSlowHeartbeat := iSlowheartbeat + 1;
+END_IF]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

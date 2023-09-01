@@ -4,7 +4,7 @@ from time import sleep
 from pprint import pprint
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-a", "--AmsNetID", default=pyads.get_local_address())
+parser.add_argument("-a", "--AmsNetID", default='127.0.0.1.1.1')
 parser.add_argument("-n", "--num_heartbeat", default=3, type=int)
 
 args = parser.parse_args()
@@ -56,4 +56,20 @@ structured_data.write({"iInt": 42, "fReal": 3.1415692, "aArray": [1, 2, 3, 4, 5,
 print("\nAfter writing, the values in the PLC are:")
 pprint(structured_data.read())
 
+## ========================= Add symbol callback 
+slow_heartbeat = plc.get_symbol("MAIN.iSlowHeartbeat")
+slow_heartbeat_values_received = 0
+
+@plc.notification(pyads.PLCTYPE_ULINT)
+def callback(handle, name, timestamp, value):
+    global slow_heartbeat_values_received 
+    slow_heartbeat_values_received += 1
+    print(f"{handle=}, {name=}, {timestamp=}, {value=}")
+
+slow_heartbeat.add_device_notification(callback)
+
+while slow_heartbeat_values_received < args.num_heartbeat:
+    ...
+
+### ========================== CLOSE PLC
 plc.close()

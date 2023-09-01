@@ -14,6 +14,7 @@ The following is shown:
     - Structure definition
     - Reading
     - Writing
+- Symbol callback that prints the information every time the value is changed
 
 An `environment.yml` file is provided to help initialise the conda environment used to run the script. Create the new environment using
 ```
